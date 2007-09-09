@@ -1,0 +1,60 @@
+#
+# Conditional build:
+%bcond_without	autodeps	# don't BR packages needed only for resolving deps
+%bcond_without	tests		# do not perform "make test"
+#
+%include	/usr/lib/rpm/macros.perl
+%define	pdir	MRO
+%define	pnam	Compat
+Summary:	MRO::Compat - mro::* interface compatibility for Perls < 5.9.5
+#Summary(pl.UTF-8):	
+Name:		perl-MRO-Compat
+Version:	0.04
+Release:	1
+# same as perl
+License:	GPL v1+ or Artistic
+Group:		Development/Languages/Perl
+Source0:	http://www.cpan.org/modules/by-authors/id/B/BL/BLBLACK/MRO-Compat-0.04.tar.gz
+# Source0-md5:	1e98114390dac2d1ac7841ecd73033b8
+URL:		http://search.cpan.org/dist/MRO-Compat/
+BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
+%if %{with autodeps} || %{with tests}
+BuildRequires:	perl-Class-C3 >= 0.19
+BuildRequires:	perl-Class-C3-XS >= 0.08
+%endif
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+The "mro" namespace provides several utilities for dealing with method
+resolution order and method caching in general in Perl 5.9.5 and higher.
+
+# %description -l pl.UTF-8
+# TODO
+
+%prep
+%setup -q -n %{pdir}-%{pnam}-%{version}
+
+%build
+%{__perl} Makefile.PL \
+	INSTALLDIRS=vendor
+%{__make}
+
+%{?with_tests:%{__make} test}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} pure_install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc ChangeLog
+%dir %{perl_vendorlib}/MRO
+%{perl_vendorlib}/MRO/*.pm
+%{_mandir}/man3/*
