@@ -20,8 +20,11 @@ URL:		http://search.cpan.org/dist/MRO-Compat/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with autodeps} || %{with tests}
-BuildRequires:	perl-Class-C3 >= 0.19
+BuildRequires:	perl-Class-C3 >= 0.20
 BuildRequires:	perl-Class-C3-XS >= 0.08
+%endif 
+%if %{with tests}
+BuildRequires:	perl-Test-Simple >= 0.47
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
