@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_without	tests		# do not perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define	pdir	MRO
 %define	pnam	Compat
 Summary:	MRO::Compat - mro::* interface compatibility for Perls < 5.9.5
