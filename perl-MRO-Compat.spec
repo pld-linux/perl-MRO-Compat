@@ -7,13 +7,13 @@
 Summary:	MRO::Compat - mro::* interface compatibility for Perls < 5.9.5
 Summary(pl.UTF-8):	MRO::Compat - moduł dla kompatybilności z interfejsem mro::* dla Perla < 5.9.5
 Name:		perl-MRO-Compat
-Version:	0.12
+Version:	0.13
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-authors/id/B/BO/BOBTFISH/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	06d21a3baf3d578ff3d3e10621656530
+Source0:	http://www.cpan.org/modules/by-authors/id/H/HA/HAARG/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	d2e603e8ae9dc6934162d190eb085385
 URL:		http://search.cpan.org/dist/MRO-Compat/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog
+%doc Changes
 %dir %{perl_vendorlib}/MRO
 %{perl_vendorlib}/MRO/Compat.pm
 %{_mandir}/man3/MRO::Compat.3pm*
