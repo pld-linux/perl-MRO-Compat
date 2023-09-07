@@ -1,22 +1,23 @@
 #
 # Conditional build:
-%bcond_without	tests		# do not perform "make test"
+%bcond_without	tests	# unit tests
 #
 %define	pdir	MRO
 %define	pnam	Compat
 Summary:	MRO::Compat - mro::* interface compatibility for Perls < 5.9.5
 Summary(pl.UTF-8):	MRO::Compat - moduł dla kompatybilności z interfejsem mro::* dla Perla < 5.9.5
 Name:		perl-MRO-Compat
-Version:	0.13
+Version:	0.15
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-authors/id/H/HA/HAARG/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	d2e603e8ae9dc6934162d190eb085385
-URL:		http://search.cpan.org/dist/MRO-Compat/
+Source0:	https://www.cpan.org/modules/by-authors/id/H/HA/HAARG/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	f644dafe901214cedfa7ed8b43b56df1
+URL:		https://metacpan.org/dist/MRO-Compat
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
 BuildRequires:	perl-Class-C3 >= 0.24
 BuildRequires:	perl-Test-Simple >= 0.47
